@@ -1,0 +1,44 @@
+@startuml
+!theme black-knight
+class Cliente {
+ - CI: String
+ - nombre: String
+ - apellidos: String
+ - sexo: String
+ - direccion: String
+ - intolerancia-Alimentos: String
+ + buscarDatosCliente(CI: String): void
+ + obtenerClienteOrdenadosUrgencia(): List<Cliente>
+ + agregarCliente(paciente: Cliente): void
+ + eliminarCliente(CI: String): void
+ + modificarCliente(CI: String, cliente: Cliente): void
+
+}
+
+class Pedidos{
+ -capas: int
+ -sabor: String
+ -tamaño: double
+ -decoracion: String
+ -sugerencias: String
+}
+class Personal {
+ - CI: String
+ - nombre: String
+ - apellidos: String
+ - direccion: String
+ - experiencia: String
+ 
+}
+
+class Maquinas{
+ -capacidad: int
+ -tiempo: double
+ -calidad-producto: String
+ 
+}
+
+Cliente "0..*" -- "0..*" Pedidos
+Pedidos "0..*" -- "1..*" Personal
+Personal "1..*" -- "*" Maquinas
+@enduml
